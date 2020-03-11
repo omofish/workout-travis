@@ -1,48 +1,59 @@
-import React, { useContext, useState } from 'react';
-import { Grid, Header, Button, Segment } from 'semantic-ui-react';
-import WorkoutList from '../Components/WorkoutList';
-import ActiveWorkoutTimer from '../Components/ActiveWorkoutTimer';
-import { Link } from 'react-router-dom';
-import { WorkoutContext } from '../context';
+import React, { useContext, useState } from "react";
+import { Grid, Header, Button, Segment } from "semantic-ui-react";
+import WorkoutList from "../Components/WorkoutList";
+import ActiveWorkoutTimer from "../Components/ActiveWorkoutTimer";
+import { Link } from "react-router-dom";
+import { WorkoutContext } from "../context";
 
-const WorkoutsPage = ({user}) => {
+const WorkoutsPage = ({ user }) => {
   const workoutContext = useContext(WorkoutContext);
   const { equipment, exercisesAmount, generateDisplayList } = workoutContext;
 
-  const [ workingOut, setWorkingOut ] = useState(false);
- 
-  const selectedEquipment =
-    (equipment.length === 1 & equipment[0] === "None") ? 
-    "Bodyweight" : 
-    equipment.join(", ").replace("None,", "Bodyweight,")
+  const [workingOut, setWorkingOut] = useState(false);
 
- 
-  return (
-    !workingOut ? 
-    <Grid key={'content'} centered style={{ marginTop: "15px" }} >
+  const selectedEquipment =
+    (equipment.length === 1) & (equipment[0] === "None")
+      ? "Bodyweight"
+      : equipment.join(", ").replace("None,", "Bodyweight,");
+
+  return !workingOut ? (
+    <Grid key={"content"} centered style={{ marginTop: "15px" }}>
       <Grid.Row>
-        <WorkoutListHeader 
-          selectedEquipment={selectedEquipment} 
-          exercisesAmount={exercisesAmount} 
+        <WorkoutListHeader
+          selectedEquipment={selectedEquipment}
+          exercisesAmount={exercisesAmount}
           setWorkingOut={() => {
             generateDisplayList();
-            setWorkingOut(true)}}
+            setWorkingOut(true);
+          }}
         />
       </Grid.Row>
       <Grid.Row>
         <WorkoutList user={user} />
       </Grid.Row>
     </Grid>
-    :
+  ) : (
     <ActiveWorkoutTimer cancel={() => setWorkingOut(!workingOut)} />
   );
-}
+};
 
-const WorkoutListHeader = ({ selectedEquipment, exercisesAmount, setWorkingOut }) => {
+const WorkoutListHeader = ({
+  selectedEquipment,
+  exercisesAmount,
+  setWorkingOut
+}) => {
   return (
-    <Segment color="blue" style={{ width: "80%", textAlign: "left", marginTop: "20px"}}>
+    <Segment
+      color="blue"
+      style={{ width: "80%", textAlign: "left", marginTop: "20px" }}
+    >
       <Header dividing as="h3">
-        <Header textAlign="center" dividing color="blue">
+        <Header
+          textAlign="center"
+          dividing
+          color="blue"
+          data-cy="workout-header"
+        >
           Preview Workout
           <Header.Subheader content="Watch tutorials, save workouts for later, and/or swap out workouts you don't like." />
         </Header>
@@ -74,6 +85,6 @@ const WorkoutListHeader = ({ selectedEquipment, exercisesAmount, setWorkingOut }
       </Grid>
     </Segment>
   );
-}
+};
 
-export default WorkoutsPage
+export default WorkoutsPage;
