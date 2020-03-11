@@ -2,14 +2,13 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDfmgY9F8ms-PTeDATk0GKOQtA63VueGwc",
-  authDomain: "nu-hiit.firebaseapp.com",
-  databaseURL: "https://nu-hiit.firebaseio.com",
-  projectId: "nu-hiit",
-  storageBucket: "nu-hiit.appspot.com",
-  messagingSenderId: "719477044477",
-  appId: "1:719477044477:web:f2347fc0247c9e3190ba94",
-  measurementId: "G-ZLZB3V2C2V"
+  apiKey: "AIzaSyAO6dXGzcy1xWXHcB9ZGT3K6YnHoI7OvTs",
+  authDomain: "workout-travis.firebaseapp.com",
+  databaseURL: "https://workout-travis.firebaseio.com",
+  projectId: "workout-travis",
+  storageBucket: "workout-travis.appspot.com",
+  messagingSenderId: "293687814285",
+  appId: "1:293687814285:web:48736b7bd68374d4c65ac4"
 };
 
 firebase.initializeApp(firebaseConfig);
