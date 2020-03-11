@@ -2,23 +2,11 @@ import React from 'react'
 import {render, fireEvent} from 'react-testing-library'
 import EquipmentForm from './EquipmentForm'
 
-test('TodoListItem should render passed props as content body and respond to callback props', () => {
-  const markTodoDone = jest.fn()
-  const removeItem = jest.fn()
+test('You can select menu items', () => {
+  const selectEqm = jest.fn()
 
-  const item = {index: 3, value: "Fill Gas", done: false}
-  let itemIndex = 5
-  // const {getByTestId} = render(<EquipmentForm item={item} index={itemIndex}
-  //                                            markTodoDone={markTodoDone}
-  //                                            removeItem={removeItem}/>)
+  const {getByTestId} = render(<EquipmentForm />)
 
-  // expect(getByTestId('todoItem3').textContent).toBe('Fill Gas')
-
-  // fireEvent.click(getByTestId('markAsCompleted'))
-  // expect(markTodoDone).toBeCalledWith(itemIndex)
-  // expect(markTodoDone).toHaveBeenCalledTimes(1)
-
-  // fireEvent.click(getByTestId('markAsDeleted'))
-  // expect(removeItem).toBeCalledWith(itemIndex)
-  // expect(removeItem).toHaveBeenCalledTimes(1)
+  fireEvent.click(getByTestId('eqmcheck'))
+  expect(selectEqm).toHaveBeenCalledTimes(1)
 })

@@ -71,7 +71,7 @@ const EquipmentForm = () => {
           }
           return (
             <Form.Field key={item.id} style={{ textAlign: "left", marginBottom: "calc(1em - 13.84px)" }}>
-              <Checkbox
+              <Checkbox data-testid="eqmcheck"
                 label={name(item.title)}
                 value={item.title}
                 checked={equipment.includes(item.title)}
