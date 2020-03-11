@@ -8,4 +8,9 @@ describe ('Test App', () => {
     cy.visit ('/workouts');
     cy.get('[data-cy=workout-header]').should('contain', 'Preview Workout');
   });
+  
+  it('starts workout when clicking on begin', () => {
+    cy.visit ('/workouts');
+    cy.get('[data-cy=Begin]').click();
+  });
 });

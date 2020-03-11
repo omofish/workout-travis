@@ -74,6 +74,7 @@ const WorkoutListHeader = ({
               content="Back to Selection"
             />
             <Button
+              data-cy="Begin"
               attached="right"
               color="green"
               icon="play"
